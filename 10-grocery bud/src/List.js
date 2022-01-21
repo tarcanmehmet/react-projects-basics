@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
-const List = ({itemList}) => {
+const List = ({itemList, handleDelete, handleEdit, handleClearItems}) => {
   return (
     <>
     {itemList.length ? (
@@ -11,14 +11,14 @@ const List = ({itemList}) => {
             <article key={index} className='grocery-item'>
         <p className='title'>{item}</p>
         <div className='btn-container'>
-          <button className='edit-btn'><FaEdit /></button>
-          <button className='delete-btn'><FaTrash /></button>
+          <button className='edit-btn' onClick={()=>handleEdit(index)}><FaEdit /></button>
+          <button className='delete-btn' onClick={()=>handleDelete(index)}><FaTrash /></button>
         </div>
     </article>
           );
         })}
       </div>
-      <button className='clear-btn'>clear items</button>
+      <button className='clear-btn' onClick={()=> handleClearItems()}>clear items</button>
     </div>
     )
   :
